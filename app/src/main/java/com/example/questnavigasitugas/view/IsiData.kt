@@ -138,6 +138,29 @@ fun GlowCard(peserta: Peserta) {
         ),
         colors = CardDefaults.cardColors(containerColor = DarkBg)
     ) {
+        Column(
+            modifier = Modifier
+                .padding(18.dp)
+                .fillMaxWidth()
+        ) {
+            Text(
+                text = peserta.nama,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold
+                )
+            )
+            Spacer(Modifier.height(6.dp))
+            InfoRow("Jenis Kelamin", peserta.jk)
+            InfoRow("Status", peserta.status)
+            InfoRow("Alamat", peserta.alamat)
+        }
+    }
+}
+
+
+
+
 
 
 

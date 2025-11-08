@@ -7,8 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key.Companion.Home
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.questnavigasitugas.view.Formulir
+import com.example.questnavigasitugas.view.TampilData
 
 private val GradientBg = Brush.verticalGradient(
     listOf(Color(0xFF0A0B1E), Color(0xFF1E1B4B))
@@ -29,4 +33,10 @@ fun MainApp() {
             enterTransition = { fadeIn() },
             exitTransition = { fadeOut() }
         ) {
+            composable("home") { Home(navController) }
+            composable("tampil_data") { TampilData(navController) }
+            composable("formulir") { Formulir(navController) }
+        }
     }
+}
+

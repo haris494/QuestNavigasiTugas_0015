@@ -158,6 +158,28 @@ fun GlowCard(peserta: Peserta) {
     }
 }
 
+@Composable
+private fun InfoRow(label: String, value: String) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            label,
+            style = MaterialTheme.typography.bodySmall.copy(
+                color = Color(0xFF9CA3AF),
+                fontWeight = FontWeight.SemiBold
+            )
+        )
+        Text(
+            value,
+            style = MaterialTheme.typography.bodySmall.copy(
+                color = Color(0xFFE0E7FF)
+            )
+        )
+    }
+}
+
 
 
 

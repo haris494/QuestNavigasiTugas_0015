@@ -15,11 +15,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -71,9 +74,18 @@ fun TampilData(navController: NavController) {
             )
         )
 
+        Spacer(Modifier.height(6.dp))
+
+        Text(
+            "Total peserta: ${pesertaList.size}",
+            style = MaterialTheme.typography.bodyMedium.copy(
+                color = Color(0xFF9CA3AF)
+            )
+        )
+
         Spacer(Modifier.height(16.dp))
 
-
+        // Daftar peserta
         LazyColumn(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(14.dp)
@@ -81,36 +93,51 @@ fun TampilData(navController: NavController) {
             items(pesertaList) { peserta ->
                 GlowCard(peserta)
             }
+        }
 
-            Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(20.dp))
 
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            OutlinedButton(
+                onClick = { navController.navigate("Home") },
+                shape = RoundedCornerShape(10.dp),
+                border = BorderStroke(2.dp, NeonBlue),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = NeonBlue
+                )
             ) {
-                OutlinedButton(
-                    onClick = { navController.navigate("Home") },
-                    shape = RoundedCornerShape(10.dp),
-                    border = BorderStroke(2.dp, NeonBlue),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = NeonBlue
-                    )
-                ) {
-                    Text("🏠 Beranda")
-                }
-                Button(
-                    onClick = { navController.navigate("Formulir") },
-                    shape = RoundedCornerShape(10.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = NeonPurple
-                    )
-                ) {
-                    Text("📝 Formulir")
-                }
+                Text("🏠 Beranda")
+            }
+            Button(
+                onClick = { navController.navigate("Formulir") },
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = NeonPurple
+                )
+            ) {
+                Text("📝 Formulir")
             }
         }
     }
 }
+
+@Composable
+fun GlowCard(peserta: Peserta) {
+    OutlinedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .shadow(6.dp, RoundedCornerShape(16.dp)),
+        shape = RoundedCornerShape(16.dp),
+        border = BorderStroke(
+            1.dp,
+            Brush.horizontalGradient(listOf(NeonBlue, NeonPurple))
+        ),
+        colors = CardDefaults.cardColors(containerColor = DarkBg)
+    ) {
+
 
 

@@ -10,9 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,7 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 private val NeonBlue = Color(0xFF4F46E5)
@@ -30,7 +35,7 @@ private val GradientBg = Brush.verticalGradient(
 )
 
 @Composable
-fun Home(navController: NavController) {
+fun HarisShihabDzulFirdausi(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -38,12 +43,11 @@ fun Home(navController: NavController) {
             .padding(20.dp)
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // Judul
+
             Text(
                 text = "Selamat Datang 👋",
                 style = MaterialTheme.typography.headlineMedium.copy(
@@ -54,7 +58,7 @@ fun Home(navController: NavController) {
             Spacer(Modifier.height(6.dp))
 
             Text(
-                text = "Sistem Pendaftaran Peserta",
+                text = "Haris Shihab Dzul Firdausi",
                 style = MaterialTheme.typography.bodyMedium.copy(
                     color = Color(0xFF9CA3AF)
                 )
@@ -62,7 +66,7 @@ fun Home(navController: NavController) {
 
             Spacer(Modifier.height(26.dp))
 
-            // Kartu tengah
+
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(24.dp),
@@ -71,3 +75,55 @@ fun Home(navController: NavController) {
                 ),
                 elevation = CardDefaults.cardElevation(10.dp)
             ) {
+                Column(
+                    modifier = Modifier
+                        .padding(24.dp)
+                        .fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "📝 Formulir Pendaftaran",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp,
+                        color = Color.White
+                    )
+                    Spacer(Modifier.height(8.dp))
+
+                    Text(
+                        text = "Silakan isi data dengan benar untuk keperluan pendataan peserta.",
+                        fontSize = 14.sp,
+                        color = Color(0xFF9CA3AF),
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(Modifier.height(20.dp))
+
+                    Button(
+                        onClick = { navController.navigate("formulir") },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = NeonBlue
+                        ),
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Isi Formulir", color = Color.White, fontWeight = FontWeight.SemiBold)
+                    }
+
+                    Spacer(Modifier.height(10.dp))
+
+                    OutlinedButton(
+                        onClick = { navController.navigate("tampil_data") },
+                        border = ButtonDefaults.outlinedButtonBorder.copy(width = 1.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            contentColor = NeonPurple
+                        )
+                    ) {
+                        Text("Lihat Data", fontWeight = FontWeight.SemiBold)
+                    }
+                }
+            }
+        }
+    }
+}

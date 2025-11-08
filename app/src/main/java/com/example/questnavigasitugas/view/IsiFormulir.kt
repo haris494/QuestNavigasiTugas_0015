@@ -61,5 +61,13 @@ fun Formulir(navController: NavController) {
                 fontSize = 26.sp,
                 color = Color.White
             )
+
+            Text(
+                text = "Silakan isi data dengan benar untuk keperluan pendataan peserta.",
+                fontSize = 14.sp,
+                color = Color(0xFF9CA3AF)
+            )
+
         }
     }
+}
